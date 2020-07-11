@@ -1,4 +1,7 @@
-<?php include "includes/header.php"; ?>
+<!-- Database Connection -->
+  <?php include "../includes/db.php"?>
+   
+    <?php include "includes/header.php"; ?>
 
     <div id="wrapper">
        
@@ -15,17 +18,9 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Blank Page
-                            <small>Subheading</small>
+                            Welcome Admin
+                            <small>Author</small>
                         </h1>
-                        <ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
-                            </li>
-                            <li class="active">
-                                <i class="fa fa-file"></i> Blank Page
-                            </li>
-                        </ol>
                     </div>
                 </div>
                 <!-- /.row -->
@@ -36,6 +31,5 @@
         </div>
         <!-- /#page-wrapper -->
 
-  
-   <?php include "includes/footer.php"; ?>
+   <?php include "includes/footer.php" ?>
 

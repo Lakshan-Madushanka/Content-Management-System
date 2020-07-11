@@ -8,5 +8,5 @@
     <script src="js/bootstrap.min.js"></script>
 
 </body>
-
+  <script src="./js/nav_highlight.txt"></script>
 </html>
