@@ -19,10 +19,11 @@
                                  <?php
                                   
                                    $query = "SELECT * FROM posts";
-                                   $select_categories_admin = mysqli_query($connection, $query);
-
-                                   while($row = mysqli_fetch_assoc($select_categories_admin)) {
-
+                                   $select_posts_admin = mysqli_query($connection, $query);
+                                   query_confirm($select_posts_admin);
+                                  
+                                  while($row = mysqli_fetch_assoc($select_posts_admin)) {
+                                       echo 'iam here-';
                                        $post_id = $row['post_id'];
                                        $post_author = $row['post_author'];
                                        $post_title = $row['post_title'];
@@ -41,12 +42,15 @@
                                        // display category title accordingly  post_category_id
                                        $query = "SELECT cat_title FROM category WHERE cat_id = $post_category_id";
                                        $select_categories_admin = mysqli_query($connection, $query);
+                                       
+                                       query_confirm($select_categories_admin);
 
                                        while($row = mysqli_fetch_assoc($select_categories_admin)) {
                                            $cat_title = ucfirst($row['cat_title']);
 
                                            echo "<td>{$cat_title}</td>";
                                        }
+                                       
                                      echo "<td>{$post_status}</td>";
                                      echo "<td><img style='width:65px;height:50px' src='./images/{$post_image}' alt='Post image'></td>";
                                      echo "<td>{$post_tags}</td>";
@@ -60,15 +64,15 @@
                                      echo "<td><a href='categories.php?edit={$cat_id}'>edit</a></td>";*/
 
                                      echo "</tr>";
+                      
                                    }
                                   ?>
                               </tbody>
                           </table>
                           
-                         <?php
+                        <!-- <?php
                             
                             if(isset($_GET['delete'])) {
-                                
                                 $post_id = $_GET['delete'];
                                 
                                 $query = "DELETE FROM posts WHERE post_id = {$post_id}";
@@ -76,7 +80,9 @@
                                 $post_delete_query = mysqli_query($connection, $query);
                                 
                                 query_confirm($post_delete_query);
+                                
+                                header('Location: posts.php');
                             }
     
 
-                        ?>
+                        ?>-->

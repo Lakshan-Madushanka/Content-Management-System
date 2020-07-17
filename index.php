@@ -38,8 +38,14 @@ include "includes/navigation.php";
                         $post_comment_count   = $row['post_comment_count'];
                         $post_status   = $row['post_status'];
                         $post_views_count   = $row['post_views_count'];
+                        
+                        /*if($post_status != 'published') {
+                            echo "<h1>No posts Found ! </h1>";
+                        }*/
 
                    ?>
+                   
+                   
 
                 <h1 class="page-header">
                     Page Heading

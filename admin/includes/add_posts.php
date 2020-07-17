@@ -42,10 +42,10 @@
           <input type="text" class="form-control" name="author">
       </div> -->   
 
-       <div class="form-group">
+       <!--<div class="form-group">
            <label for="post_status">Post Author</label>
        <input type="text" class="form-control" name="post_status">
-       </div>
+       </div>-->
        
     <div class="form-group">
          <label for="post_image">Post Image</label>
@@ -77,7 +77,7 @@
             $post_title        = $_POST['post_title'];
             $post_user         = $_POST['post_author'];
             $post_category_id  = $_POST['post_category'];
-            $post_status       = $_POST['post_status'];
+            //$post_status       = $_POST['post_status'];
     
             $post_image        = $_FILES['image']['name'];
             $post_image_temp   = $_FILES['image']['tmp_name'];
@@ -90,11 +90,11 @@
         move_uploaded_file($post_image_temp, "../images/$post_image" );
        
        
-      $query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date,post_image,post_content,post_tags,post_status) ";
+      $query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date,post_image,post_content,post_tags) ";
              
-      $query .= "VALUES({$post_category_id},'{$post_title}','{$post_user}',now(),'{$post_image}','{$post_content}','{$post_tags}', '{$post_status}') ";    
+      $query .= "VALUES({$post_category_id},'{$post_title}','{$post_user}',now(),'{$post_image}','{$post_content}','{$post_tags}') ";    
         
-     $create_post_query = mysqli_query($connection, $query);
+        $create_post_query = mysqli_query($connection, $query);
         
         query_confirm($create_post_query);
     }
