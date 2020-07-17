@@ -7,7 +7,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">CMS</a>
+                <a class="navbar-brand" href="./index.php">CMS</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -34,11 +34,11 @@
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#posts_dropdown"><i class="fa fa-fw fa-arrows-v"></i> Posts <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="posts_dropdown" class="collapse">
-                            <li>
-                                <a href="#">View All Posts</a>
+                            <li id="posts_view_all">
+                                <a href="posts.php">View All Posts</a>
                             </li>
                             <li>
-                                <a href="#">Add Posts</a>
+                                <a href="posts.php?source=1">Add Posts</a>
                             </li>
                         </ul>
                     </li>
@@ -51,7 +51,7 @@
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
-                            <li>
+                            <li class="active">
                                 <a href="#">Dropdown Item</a>
                             </li>
                             <li>

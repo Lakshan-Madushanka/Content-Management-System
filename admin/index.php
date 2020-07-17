@@ -1,6 +1,4 @@
-<!-- Database Connection -->
-  <?php include "../includes/db.php"?>
-   
+<!-- Database Connection -->   
     <?php include "includes/header.php"; ?>
 
     <div id="wrapper">

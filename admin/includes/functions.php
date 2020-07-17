@@ -1,5 +1,13 @@
 <?php
 
+function query_confirm($result) {
+    global $connection;
+   if(!$result) {
+            die("Query Failed" . mysqli_error($connection));
+        } 
+}
+
+
 function insert_categories() {
     
     global $connection;
@@ -25,15 +33,13 @@ function insert_categories() {
    }  
 }
 
-
-
 function find_all_categories() {
 
       global $connection;
 
        $query = "SELECT * FROM category";
        $select_categories_admin = mysqli_query($connection, $query);
-
+        
        while($row = mysqli_fetch_assoc($select_categories_admin)) {
 
        $cat_title = ucfirst($row['cat_title']);

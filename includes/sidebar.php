@@ -39,8 +39,8 @@
                                 <?php
                                  while($row = mysqli_fetch_assoc($select_categories_sidebar)) {
                                    $cat_title = ucfirst($row['cat_title']);
-                               
-                                     echo "<li><a href='#'>{$cat_title}</a></li>";
+                                   $cat_id = $row['cat_id'];    
+                                     echo "<li><a href='category.php?cat_id={$cat_id}&cat_n={$cat_title}'>{$cat_title}</a></li>";
                             }
                                 ?>
                                 

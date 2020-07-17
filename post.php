@@ -13,16 +13,21 @@ include "includes/header.php";
 <?php
 include "includes/navigation.php";
 ?>
+
     <!-- Page Content -->
     <div class="container">
 
         <div class="row">
 
-            <!-- Blog Entries Column -->
-            <div class="col-md-8">
+            <!-- Blog Post Content Column -->
+            <div class="col-lg-8">
+             <?php
                 
-                <?php
-                   $query = "SELECT * FROM posts";
+                    if(isset($_GET['p_id'])) {
+                        $post_id = $_GET['p_id'];
+                    }
+                
+                   $query = "SELECT * FROM posts WHERE post_id = {$post_id}";
                    $select_all_posts_query = mysqli_query($connection, $query);
                                         
                     while($row = mysqli_fetch_assoc($select_all_posts_query)) {
@@ -33,36 +38,67 @@ include "includes/navigation.php";
                         $post_author   = $row['post_author'];
                         $post_date   = $row['post_date'];
                         $post_image  = $row['post_image'];
-                        $post_content   = substr($row['post_content'],0,150);
+                        $post_content   = $row['post_content'];
                         $post_tags   = $row['post_tags'];
                         $post_comment_count   = $row['post_comment_count'];
                         $post_status   = $row['post_status'];
                         $post_views_count   = $row['post_views_count'];
 
                    ?>
+                <!-- Blog Post -->
 
-                <h1 class="page-header">
-                    Page Heading
-                    <small>Secondary Text</small>
-                </h1>
+                <!-- Title -->
+                <h1><?php echo $post_title ?></h1>
 
-                <!-- First Blog Post -->
-                <h2>
-                    <a href="post.php?p_id=<?php echo $post_id ?>"><?php echo $post_title ?></a>
-                </h2>
+                <!-- Author -->
                 <p class="lead">
-                    by <a href="index.php"><?php echo $post_author ?></a>
+                    by <a href="#"><?php echo $post_author ?></a>
                 </p>
-                <p><span class="glyphicon glyphicon-time"></span> Posted on <?php echo $post_date ?></p>
-                <hr>
-                <img class="img-responsive" src="images/<?php echo $post_image ?>" alt="image 1">
-                <hr>
-                <p><?php echo $post_content ?></p>
-                <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
                 <hr>
 
-           <?php } ?>
+                <!-- Date/Time -->
+                <p><span class="glyphicon glyphicon-time"></span> <?php echo $post_date ?></p>
+
+                <hr>
+
+                <!-- Preview Image -->
+                <img class="img-responsive" src="images/<?php echo $post_image ?>" alt="">
+
+                <hr>
+
+                <!-- Post Content -->
+                <p class="lead"><?php echo $post_content ?></p>
+
+                <hr>
+
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+                <!-- Blog Comments -->
+
+                <!-- Comments Form -->
+                
+                
+                
+                
+                
+                
+            
+            <?php } ?>
+
+                
+                
+
             </div>
 
             <!-- Blog Sidebar Widgets Column -->
