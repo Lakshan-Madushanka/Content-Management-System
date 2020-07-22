@@ -47,10 +47,10 @@ if(isset($_GET['edit_user'])){
            // $post_image_temp = $_FILES['image']['tmp_name'];
 
 
-            $username      = escape($_POST['username']);
-            $user_email    = escape($_POST['user_email']);
-            $user_password = escape($_POST['user_password']);
-            $post_date     = escape(date('d-m-y'));
+            $username      = $_POST['username'];
+            $user_email    = $_POST['user_email'];
+            $user_password = $_POST['user_password'];
+            $post_date     = date('d-m-y');
 
 
 
@@ -59,7 +59,7 @@ if(isset($_GET['edit_user'])){
 
           $query_password = "SELECT user_password FROM users WHERE user_id =  $the_user_id";
           $get_user_query = mysqli_query($connection, $query_password);
-          queryConfirm($get_user_query);
+          query_confirm($get_user_query);
 
           $row = mysqli_fetch_array($get_user_query);
 

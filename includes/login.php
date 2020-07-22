@@ -26,16 +26,17 @@ if(isset($_POST['login'])) {
     while($row = mysqli_fetch_assoc($login_query)) {
         
          $db_user_id = $row['user_id'];
-         $db_username = $row['username'];
+         $db_username = $row['user_name'];
          $db_user_password = $row['user_password'];
          $db_user_firstname = $row['user_firstname'];
          $db_user_lastname = $row['user_lastname'];
          $db_user_role = $row['user_role'];  
     }
     
+    echo $db_username,$db_user_password;
     if($db_username ===  $user_name && $db_user_password === $user_password) {
-        
-             $_SESSION['username'] = $db_username;
+        echo '--------';
+             $_SESSION['user_name'] = $db_username;
              $_SESSION['firstname'] = $db_user_firstname;
              $_SESSION['lastname'] = $db_user_lastname;
              $_SESSION['user_role'] = $db_user_role;
@@ -44,7 +45,7 @@ if(isset($_POST['login'])) {
     }
     
     else {
-        header("Location: index.php");
+        header("Location: ../index.php");
     }
 
 }
