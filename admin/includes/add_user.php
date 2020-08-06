@@ -35,14 +35,14 @@
       </div>
        
        <div class="form-group">
-          <input class="btn btn-primary" type="submit" name="create_user" value="Add User">
+          <input class="btn btn-primary" type="submit" name="careate_user" value="Add User">
       </div>
 
 </form>
 
 
 <?php
-    if(isset($_POST['create_user'])) {
+    if(isset($_POST['careate_user'])) {
             $user_firstname    = $_POST['user_firstname'];
             $user_lastname     = $_POST['user_lastname'];
             $user_role         = $_POST['user_role'];

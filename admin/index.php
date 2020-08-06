@@ -166,12 +166,7 @@
           
     <!-- /.row(DashBoard) -->
            <?php
-            
-            $query = "SELECT * FROM posts WHERE post_status = 'published'";
-            $select_all_published_draft_posts = mysqli_query($connection, $query);
-            $post_published_count = mysqli_num_rows($select_all_published_draft_posts);                
-            query_confirm($select_all_published_draft_posts);   
-            
+                                   
             $query = "SELECT * FROM posts WHERE post_status = 'draft'";
             $select_all_draft_posts = mysqli_query($connection, $query);
             $post_draft_count = mysqli_num_rows($select_all_draft_posts);                
@@ -209,8 +204,8 @@
         
             
                                    
-            $graph_text = ['All Posts', 'Published Posts', 'Draft Posts','Categories', 'Users','Subscribe Users', 'Comments', 'Unapproved Comments'];
-            $graph_values = [$posts_count, $post_published_count, $post_draft_count, $categories_count ,$users_count, $subscribe_users_count, $comments_count, $unapproved_comments_count];
+            $graph_text = ['Active Posts', 'Draft Posts','Categories', 'Users','Subscribe Users', 'Comments', 'Unapproved Comments'];
+            $graph_values = [$posts_count, $post_draft_count, $categories_count ,$users_count, $subscribe_users_count, $comments_count, $unapproved_comments_count];
                                                          
             for($elm = 0; $elm < 7; $elm++) {                
                 echo "['{$graph_text[$elm]}' , {$graph_values[$elm]}], ";
