@@ -1,8 +1,0 @@
-const path = window.location.pathname;
-
-console.log(path);
-
-if(path.indexOf('categories') !== -1)
- {
-	document.getElementById('category').classList.add("active");
-}

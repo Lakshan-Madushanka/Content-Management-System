@@ -12,7 +12,9 @@
       </div>-->
 
       <div class="form-group">
-           <select name="post_category" id="">
+        
+        <label for="post_category">Post Category</label>
+           <select name="post_category" id="post_category" class="form-control">
               <?php
     
                $query = "SELECT * FROM category";
@@ -46,6 +48,14 @@
            <label for="post_status">Post Author</label>
        <input type="text" class="form-control" name="post_status">
        </div>-->
+       <div class="form-group">       
+            <label for="post_status">Post Status</label>
+              <select name="post_status" id="post_status" class="form-control">
+                <option value='draft'>Draft</option>";
+                <option value='published'>Publish</option>";             
+           </select>
+           
+    </div>
        
     <div class="form-group">
          <label for="post_image">Post Image</label>
@@ -59,8 +69,16 @@
       
       <div class="form-group">
          <label for="post_content">Post Content</label>
-         <textarea class="form-control "name="post_content" id="" cols="30" rows="10">
+         <textarea class="form-control "name="post_content" id="post_content_editor" cols="30" rows="10">
          </textarea>
+         
+         <script src="./js/ckeditor/ckeditor.js">
+          // Adding cke editor to the text area
+          </script>
+             <script>
+                CKEDITOR.replace( 'post_content_editor' );
+             </script>
+ 
       </div>
       
        <div class="form-group">
@@ -77,7 +95,7 @@
             $post_title        = $_POST['post_title'];
             $post_user         = $_POST['post_author'];
             $post_category_id  = $_POST['post_category'];
-            //$post_status       = $_POST['post_status'];
+            $post_status       = $_POST['post_status'];
     
             $post_image        = $_FILES['image']['name'];
             $post_image_temp   = $_FILES['image']['tmp_name'];
@@ -90,9 +108,9 @@
         move_uploaded_file($post_image_temp, "../images/$post_image" );
        
        
-      $query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date,post_image,post_content,post_tags) ";
+      $query = "INSERT INTO posts(post_category_id, post_status, post_title, post_author, post_date,post_image,post_content,post_tags) ";
              
-      $query .= "VALUES({$post_category_id},'{$post_title}','{$post_user}',now(),'{$post_image}','{$post_content}','{$post_tags}') ";    
+      $query .= "VALUES({$post_category_id}, '{$post_status}' , '{$post_title}', '{$post_user}', now(), '{$post_image}', '{$post_content}', '{$post_tags}') ";    
         
         $create_post_query = mysqli_query($connection, $query);
         
