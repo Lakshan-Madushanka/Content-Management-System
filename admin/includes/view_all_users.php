@@ -19,7 +19,7 @@
                                    while($row = mysqli_fetch_assoc($select_comments_admin)) {
                                        
                                         $user_id             = $row['user_id'];
-                                        $username            = $row['username'];
+                                        $username            = $row['user_name'];
                                         $user_password       = $row['user_password'];
                                         $user_firstname      = $row['user_firstname'];
                                         $user_lastname       = $row['user_lastname'];

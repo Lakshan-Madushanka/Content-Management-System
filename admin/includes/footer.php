@@ -34,6 +34,7 @@
        // controlo apply button in view all posts            
             
          $('#apply_bulk_option').css({
+             
              'cursor':'not-allowed', 
              'opacity': '0.65',
 

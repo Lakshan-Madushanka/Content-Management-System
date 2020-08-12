@@ -30,7 +30,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Welcome Admin <?php echo $_SESSION['username'] ?>
+                            Welcome Admin <?php echo $_SESSION['user_name'] ?>
                             <small><?php echo $_SESSION['user_name'] ?></small>
                         </h1>
                     </div>
