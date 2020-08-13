@@ -20,8 +20,9 @@ include "includes/navigation.php";
 
             <!-- Blog Post Content Column -->
             <div class="col-lg-8">
+            
              <?php
-                
+                    // Get Post Details
                     if(isset($_GET['p_id'])) {
                         $post_id = $_GET['p_id'];
                     }
@@ -81,18 +82,9 @@ include "includes/navigation.php";
                 <hr>
 
                
-               
-               
-               
-               
-               
-        
         <?php } ?>
 
-               
-               
-               
-               
+
                 <!-- Blog Comments -->
 
         <?php
@@ -132,8 +124,7 @@ include "includes/navigation.php";
         }         
                         
     }      
-                
-                             
+                                   
                 
         ?>
                 <!-- Comments Form -->
@@ -193,7 +184,6 @@ include "includes/navigation.php";
                         <h4 class="media-heading"><?php echo $comment_author;   ?>
                             <small><?php echo $comment_date;   ?></small>
                         </h4>
-                        lakakakakka
                         <?php echo $comment_content;   ?>
  
                     </div>

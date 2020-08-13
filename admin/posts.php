@@ -34,7 +34,11 @@
                                         break;
                                         
                                         case 'edit_posts';
-                                         include "./includes/edit_posts.php";
+                                        include "./includes/edit_posts.php";
+                                        break;
+                                        
+                                        case 'post_comments';
+                                        include "./includes/post_comments.php";
                                         break;
                                         
                                         default:

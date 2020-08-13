@@ -8,7 +8,6 @@ if ( isset( $_POST['checkBoxArray'] ) ) {
 
         $bulk_options = $_POST['bulk_options'];
 
-        echo $bulk_options;
 
         switch( $bulk_options ) {
 
@@ -186,7 +185,26 @@ while( $row = mysqli_fetch_assoc( $select_posts_admin ) ) {
     echo "<td>{$post_status}</td>";
     echo "<td><img style='width:65px;height:50px' src='./images/{$post_image}' alt='Post image'></td>";
     echo "<td>{$post_tags}</td>";
-    echo "<td>{$post_comment_count}</td>";
+    
+        // Get post related comments
+        $query = "SELECT * FROM comments WHERE comment_post_id = $post_id";
+        $send_comment_query = mysqli_query($connection, $query);
+
+        $row = mysqli_fetch_assoc($send_comment_query);
+        $comment_id = $row['comment_id'];
+        $count_comments = mysqli_num_rows($send_comment_query);
+
+         if($count_comments <= 0 ) {
+
+           echo "<td>$count_comments</td>";
+           
+         } else {
+        
+             echo "<td><a href='posts.php?source=post_comments&p_id={$post_id}'>$count_comments</a></td>";
+
+            }
+    
+   // echo "<td><a href=''> {$post_comment_count} </a></td>";
     echo "<td>{$post_view_count}</td>";    
     echo "<td>{$post_date}</td>";
     echo "<td><a href='posts.php?source=edit_posts&p_id={$post_id}'>edit</a></td>";

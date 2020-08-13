@@ -30,11 +30,11 @@
                                 switch($source) {
                                         
                                         case 1;
-                                         include "./includes/add_comments.php";
+                                        include "./includes/add_comments.php";
                                         break;
                                         
                                         case 'edit_posts';
-                                         include "./includes/edit_comments.php";
+                                        include "./includes/edit_comments.php";
                                         break;
                                         
                                         default:

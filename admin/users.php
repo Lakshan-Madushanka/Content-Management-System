@@ -19,10 +19,11 @@
                         </h1>
                                                   
                           <?php
-                        
+                                //Get post page accordingly source
                             if(isset($_GET['source']))
                             {
                                 $source = $_GET['source'];
+                            
                             }else {
                                 $source = '';
                             }

@@ -132,9 +132,7 @@ include "includes/sidebar.php";
           
       </ul>
        
-       
-        
-         
+             
          <!-- Footer -->
         
 <?php
