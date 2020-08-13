@@ -46,11 +46,11 @@
                     </span>
                    </div>
 
-                    <div class="form-group" style="margin-top:10px">
+                    <div class="form-group" style="margin-top:15px">
 
                         <a href="forgot.php?forgot=<?php echo uniqid(true); ?>">Forgot Password</a>
 
-
+                         <a class="pull-right" href="registration.php">Register</a>
                     </div>
 
                 </form><!--search form-->

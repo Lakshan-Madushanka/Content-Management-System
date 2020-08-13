@@ -22,7 +22,33 @@ include "includes/navigation.php";
             <div class="col-md-8">
                 
                 <?php
-                   $query = "SELECT * FROM posts";
+                
+                   $post_count_query = "SELECT * FROM posts";
+                   $find_count = mysqli_query($connection, $query);
+                   $count = mysqli_num_rows($find_count);
+                
+                    
+                   $per_page = 1;        
+                   $pages = ceil($count/$per_page);    
+                
+                    echo $pages;
+                
+                    $current_page = 1;
+                
+                    if(isset($_GET['page'])) {
+                        
+                        $current_page = $_GET['page'];
+                        
+                        $lower_page_limit = ($current_page * $per_page) - $per_page;
+                        
+                    } else {
+                        
+                        $lower_page_limit = 0;
+                    }
+                
+                   $query = "SELECT * FROM posts ";
+                   $query .= "ORDER BY post_id DESC limit {$lower_page_limit}, {$per_page}"; 
+                
                    $select_all_posts_query = mysqli_query($connection, $query);
                                         
                     while($row = mysqli_fetch_assoc($select_all_posts_query)) {
@@ -37,7 +63,7 @@ include "includes/navigation.php";
                         $post_tags   = $row['post_tags'];
                         $post_comment_count   = $row['post_comment_count'];
                         $post_status   = $row['post_status'];
-                        $post_views_count   = $row['post_views_count'];
+                        $post_views_count   = $row['post_view_count'];
                         
                         /*if($post_status != 'published') {
                             echo "<h1>No posts Found ! </h1>";
@@ -46,7 +72,6 @@ include "includes/navigation.php";
                    ?>
                    
                    
-
                 <h1 class="page-header">
                     Page Heading
                     <small>Secondary Text</small>
@@ -57,7 +82,7 @@ include "includes/navigation.php";
                     <a href="post.php?p_id=<?php echo $post_id ?>"><?php echo $post_title ?></a>
                 </h2>
                 <p class="lead">
-                    by <a href="index.php"><?php echo $post_author ?></a>
+                    by <a href="author_posts.php?author=<?php echo $post_author ?>&p_id=<?php echo $post_id ?>"><?php echo $post_author ?></a>
                 </p>
                 <p><span class="glyphicon glyphicon-time"></span> Posted on <?php echo $post_date ?></p>
                 <hr>
@@ -81,7 +106,36 @@ include "includes/sidebar.php";
 
         <hr>
 
-        <!-- Footer -->
+    <!-- pagination -->
+      
+      <ul class="pager">
+          
+          <?php
+          
+            for($i =1 ; $i<= $pages ; $i++) {
+                
+                if($current_page == $i) {
+                    
+                    echo "<li><a style='background-color:yellow' href='index.php?page={$i}'>{$i}</a></li>";
+
+                } else {
+                
+                    echo "<li><a href='index.php?page={$i}'>{$i}</a></li>";
+                    
+                }
+                
+            }
+          
+          
+          ?>
+          
+          
+      </ul>
+       
+       
+        
+         
+         <!-- Footer -->
         
 <?php
 include "includes/footer.php";

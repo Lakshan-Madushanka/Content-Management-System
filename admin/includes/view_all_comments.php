@@ -40,12 +40,20 @@
                                        // display post title accordingly  comment_post_id
                                        $query = "SELECT * FROM posts WHERE post_id = $comment_post_id";
                                        $select_posts_id_query = mysqli_query($connection, $query);
+                                       
+                                      if ( !mysqli_num_rows( $select_posts_id_query ) ) {
+
+                                            echo '<td>NULL</td>';
+                                          
+                                        } else {
 
                                        while($row = mysqli_fetch_assoc($select_posts_id_query)) {
                                            $post_title = ucfirst($row['post_title']);
                                            $post_id = $row['post_id'];
                                            
                                            echo "<td><a href='../post.php?p_id=$post_id'>$post_title</a></td>";
+                                            
+                                            }
                                        }
                                                                             
                                      echo "<td>{$comment_date}</td>";

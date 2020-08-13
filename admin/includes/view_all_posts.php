@@ -120,6 +120,7 @@ if ( isset( $_POST['checkBoxArray'] ) ) {
 <th>Image</th>
 <th>Tags</th>
 <th>Comments</th>
+<th>Views</th>
 <th>Date</th>
 <th>Edit</th>
 <th>Delete</th>
@@ -129,12 +130,12 @@ if ( isset( $_POST['checkBoxArray'] ) ) {
 <tbody>
 <?php
 
-$query = 'SELECT * FROM posts';
+$query = 'SELECT * FROM posts ORDER BY post_id DESC';
 $select_posts_admin = mysqli_query( $connection, $query );
 query_confirm( $select_posts_admin );
 
 while( $row = mysqli_fetch_assoc( $select_posts_admin ) ) {
-    // echo 'iam here-';
+
     $post_id = $row['post_id'];
     $post_author = $row['post_author'];
     $post_title = $row['post_title'];
@@ -143,6 +144,7 @@ while( $row = mysqli_fetch_assoc( $select_posts_admin ) ) {
     $post_image = $row['post_image'];
     $post_tags = $row['post_tags'];
     $post_comment_count = $row['post_comment_count'];
+    $post_view_count = $row['post_view_count'];
     $post_date = $row['post_date'];
 
     echo '<tr>';
@@ -185,6 +187,7 @@ while( $row = mysqli_fetch_assoc( $select_posts_admin ) ) {
     echo "<td><img style='width:65px;height:50px' src='./images/{$post_image}' alt='Post image'></td>";
     echo "<td>{$post_tags}</td>";
     echo "<td>{$post_comment_count}</td>";
+    echo "<td>{$post_view_count}</td>";    
     echo "<td>{$post_date}</td>";
     echo "<td><a href='posts.php?source=edit_posts&p_id={$post_id}'>edit</a></td>";
 
