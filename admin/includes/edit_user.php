@@ -15,7 +15,7 @@ if ( isset( $_GET['edit_user'] ) ) {
 
         $user_id        = $row['user_id'];
         $username       = $row['user_name'];
-        $user_password  = $row['user_password'];
+        $user_password_old  = $row['user_password'];
         $user_firstname = $row['user_firstname'];
         $user_lastname  = $row['user_lastname'];
         $user_email     = $row['user_email'];
@@ -39,11 +39,10 @@ if ( isset( $_GET['edit_user'] ) ) {
 
         $username      = $_POST['username'];
         $user_email    = $_POST['user_email'];
-        $user_password = $_POST['user_password'];
+        $user_password_new = $_POST['user_password'];
         $post_date     = date( 'd-m-y' );
         
-         $pwd_peppered = hash_hmac( 'sha256', $user_password, $pepper );
-         $pwd_hashed = password_hash( $pwd_peppered, PASSWORD_BCRYPT );
+        
         
 
         /*if ( !empty( $user_password ) ) {
@@ -67,8 +66,22 @@ if ( isset( $_GET['edit_user'] ) ) {
             $query .= "user_lastname = '{$user_lastname}', ";
             $query .= "user_role   =  '{$user_role}', ";
             $query .= "user_name = '{$username}', ";
-            $query .= "user_email = '{$user_email}', ";
-            $query .= "user_password   = '{$hashed_password}' ";
+            $query .= "user_email = '{$user_email}' ";
+        
+            // do not update password if user haven't enter new one
+        
+            $pwd_peppered = hash_hmac( 'sha256', $user_password_old, $pepper );
+            $pwd_hashed = password_hash( $pwd_peppered, PASSWORD_BCRYPT );
+        
+            if ( !password_verify( $pwd_peppered, $pwd_hashed ) ) {
+
+            $pwd_peppered = hash_hmac( 'sha256', $user_password_new, $pepper );
+            $pwd_hashed = password_hash( $pwd_peppered, PASSWORD_BCRYPT );
+                
+            $query .= ", user_password   = '{$pwd_hashed}' ";
+                
+            
+            }
             $query .= "WHERE user_id = {$the_user_id} ";
 
             $edit_user_query = mysqli_query( $connection, $query );
@@ -130,17 +143,17 @@ if ( $user_role == 'Admin' ) {
 
 <div class = 'form-group'>
 <label for = 'post_tags'>Username</label>
-<input type = 'text' value = "<?php echo $username; ?>" class = 'form-control' name = 'username'>
+<input type = 'text' value = "<?php echo $username; ?>" class = 'form-control' name = 'username' required>
 </div>
 
 <div class = 'form-group'>
 <label for = 'post_content'>Email</label>
-<input type = 'email' value = "<?php echo $user_email; ?>" class = 'form-control' name = 'user_email'>
+<input type = 'email' value = "<?php echo $user_email; ?>" class = 'form-control' name = 'user_email' required>
 </div>
 
 <div class = 'form-group'>
 <label for = 'post_content'>Password</label>
-<input autocomplete = 'off' type = 'password'  class = 'form-control' name = 'user_password'>
+<input autocomplete = 'nope' type = 'password' value='' class = 'form-control' name = 'user_password' required>
 </div>
 
 <div class = 'form-group'>

@@ -14,14 +14,16 @@
         }
 
     ?>
+       
+    
 
-    <div id="wrapper">
-       
-       
-        <!-- Navigation -->
+           
+ <!-- Navigation -->
+ 
 <?php include "includes/navigation.php"; ?>
 
-       
+    <div id="wrapper">
+
         <div id="page-wrapper">
 
             <div class="container-fluid">

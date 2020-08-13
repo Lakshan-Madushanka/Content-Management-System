@@ -22,3 +22,8 @@ background-repeat: no-repeat;
 background-position: center;
 
 }
+
+[class~=col] {
+    
+    overflow:auto !important;
+}
